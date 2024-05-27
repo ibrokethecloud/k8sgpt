@@ -48,6 +48,10 @@ const (
 	  - Containers:
 	    - {list of container names}
 	`
+
+	stern_error_lookup = `
+	identify impacted component in message %s as format {ComponentName} and {KubernetesResourceTypeShortName} and {KubernetesObjectName} as json only
+	`
 )
 
 var PromptMap = map[string]string{
@@ -56,4 +60,5 @@ var PromptMap = map[string]string{
 	"ConfigAuditReport":             trivy_conf_prompt,
 	"PrometheusConfigValidate":      prom_conf_prompt,
 	"PrometheusConfigRelabelReport": prom_relabel_prompt,
+	"SternLookup":                   stern_error_lookup,
 }
