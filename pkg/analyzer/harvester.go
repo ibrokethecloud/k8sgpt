@@ -188,6 +188,7 @@ func (h HarvesterAnalyzer) Analyze(a common.Analyzer) ([]common.Result, error) {
 
 }
 
+// nadAnalyzer checks if net-attach-definitions (VM Networks) have failed dhcp or route connectivity
 func (h HarvesterAnalyzer) nadAnalyzer(ctx context.Context, _ kubernetes.K8sApiReference) ([]common.Result, error) {
 	var currentAnalysis []common.Result
 
@@ -240,6 +241,7 @@ func (h HarvesterAnalyzer) nadAnalyzer(ctx context.Context, _ kubernetes.K8sApiR
 	return currentAnalysis, nil
 }
 
+// clusterNwtworkAnalyzer checks if cluster network is ready
 func (h HarvesterAnalyzer) clusterNetworkAnalyzer(ctx context.Context, _ kubernetes.K8sApiReference) ([]common.Result, error) {
 	var currentAnalysis []common.Result
 	clusterNetworkList, err := h.ncClient.NetworkV1beta1().ClusterNetworks().List(ctx, metav1.ListOptions{})
